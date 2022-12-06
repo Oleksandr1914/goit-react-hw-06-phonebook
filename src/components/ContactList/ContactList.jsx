@@ -1,5 +1,11 @@
 import React from 'react';
-import { Item, BlockItem, BtnDelete, SpanName } from './ContactListStyled';
+import {
+  List,
+  Item,
+  BlockItem,
+  BtnDelete,
+  SpanName,
+} from './ContactListStyled';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteTask } from 'redux/contactSlice';
 
@@ -7,10 +13,9 @@ const ContactsList = () => {
   const dispatch = useDispatch();
   const contact = useSelector(state => state.root.contacts);
   const filter = useSelector(state => state.root.filters);
-  console.log(contact);
-  console.log(filter);
+
   return (
-    <ul>
+    <List>
       {contact
         .filter(el => el.textName.toLowerCase().includes(filter))
         .map(el => (
@@ -30,7 +35,7 @@ const ContactsList = () => {
             </BlockItem>
           </Item>
         ))}
-    </ul>
+    </List>
   );
 };
 
